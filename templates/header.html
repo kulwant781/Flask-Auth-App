@@ -1,0 +1,25 @@
+<header style="background-color: #000; padding: 10px 20px;">
+    <div style="display: flex; justify-content: space-between; align-items: center;">
+        <!-- Left side: Logo -->
+        <img src="{{ url_for('static', filename='uploads/fav.svg') }}" alt="Logo" style="height: 50px; width: 50px; border-radius: 50%;">
+
+        <!-- Center: Menu -->
+        <nav style="flex-grow: 1; text-align: center;">
+            <ul style="list-style: none;display: inline-flex;margin: 0;padding: 0;background-color: #000;">
+                <li style="margin-right: 20px;"><a href="{{ url_for('dashbord') }}" style="color: white; text-decoration: none;">Dashboard</a></li>
+                <li style="margin-right: 20px;"><a href="{{ url_for('merge_pdf') }}" style="color: white; text-decoration: none;">Merge PDF</a></li>
+                <li style="margin-right: 20px;"><a href="{{ url_for('show_notification') }}" style="color: white; text-decoration: none;">Notification</a></li>
+                <li style="margin-right: 20px;"><a href="{{ url_for('show_all_users') }}" style="color: white; text-decoration: none;">CRUD</a></li>
+                <li style="margin-right: 20px;"><a href="{{ url_for('product_index') }}" style="color: white; text-decoration: none;">Product</a></li>
+            </ul>
+        </nav>
+
+        <!-- Right side: Username + Logout -->
+        <div style="color: white; display: flex; align-items: center;">
+            <span style="margin-right: 10px;">{{ session.username }}</span>
+            <a href="{{ url_for('logout') }}" style="background-color: #ff4d4d; color: white; padding: 6px 12px; border-radius: 4px; text-decoration: none;">Logout</a>
+        </div>
+    </div>
+</header>
+
+

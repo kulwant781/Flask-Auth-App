@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Merge PDF</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100">
+    {% include 'header.html' %}
+  <div class="max-w-3xl mx-auto mt-20 p-4">
+    <div class="bg-white shadow-2xl rounded-2xl p-8 border border-gray-200">
+      <div class="text-center mb-6">
+        <h1 class="text-3xl font-bold text-indigo-600">Merge PDF Files</h1>
+        <p class="text-gray-500 mt-2 text-lg">Easily combine multiple PDF documents into one file</p>
+      </div>
+
+      <form action="{{ url_for('merge_pdf') }}" method="POST" enctype="multipart/form-data" class="space-y-6">
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">Select PDF files</label>
+          <input type="file" name="pdf_files" multiple accept=".pdf" required
+            class="block w-full text-sm text-gray-600 
+                   file:mr-4 file:py-2 file:px-4 
+                   file:rounded-md file:border-0 
+                   file:text-sm file:font-semibold 
+                   file:bg-indigo-50 file:text-indigo-700 
+                   hover:file:bg-indigo-100">
+        </div>
+
+        <div class="text-center">
+          <button type="submit"
+            class="bg-indigo-600 text-white px-6 py-2 rounded-md shadow-md hover:bg-indigo-700 transition duration-300">
+            Merge PDFs
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+{% include 'footer.html' %}

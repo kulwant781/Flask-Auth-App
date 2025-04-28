@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Water Reminder</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="bg-gray-100 min-h-screen">
+    {% include 'header.html' %}
+  <div class="max-w-3xl mx-auto mt-20 p-4">
+    <div class="bg-white shadow-2xl rounded-2xl p-8 border border-gray-200">
+      <div class="text-center mb-6">
+        <h1 class="text-3xl font-bold text-indigo-600">Set Your Drink Water Reminder</h1>
+        <p class="text-gray-500 mt-2 text-lg">Water message will appear at the bottom right</p>
+      </div>
+
+      {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+          <div class="mb-4">
+            {% for category, message in messages %}
+              <div class="p-4 mb-2 text-white rounded-md 
+                          {% if category == 'success' %}bg-green-500{% elif category == 'error' %}bg-red-500{% else %}bg-blue-500{% endif %}">
+                {{ message }}
+              </div>
+            {% endfor %}
+          </div>
+        {% endif %}
+      {% endwith %}
+
+      <form action="{{ url_for('set_reminder') }}" method="POST" class="space-y-6">
+        <div>
+          <label class="block text-gray-700 font-medium mb-2">Set Reminder Interval (in hours):</label>
+          <input type="number" step="0.1" name="interval" value="{{ interval }}" required
+            class="w-full rounded-md border border-gray-300 p-3 text-gray-700 focus:outline-none focus:ring-2 focus:ring-indigo-500 focus:border-indigo-500">
+        </div>
+
+        <div class="text-center">
+          <button type="submit"
+            class="bg-indigo-600 text-white px-6 py-2 rounded-md shadow-md hover:bg-indigo-700 transition duration-300">
+            Set Reminder
+          </button>
+        </div>
+      </form>
+    </div>
+  </div>
+</body>
+</html>
+{% include 'footer.html' %}

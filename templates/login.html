@@ -1,0 +1,29 @@
+<!-- Store this code in 'login.html' file inside the 'templates' folder -->
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Login</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    <link rel="stylesheet" href="{{ url_for('static', filename='auth.css') }}">
+</head>
+<body>
+    <div class="login-container">
+        <h1>Login</h1>
+        <form action="{{ url_for('login') }}" method="post">
+            {% if msg %}
+            <div class="msg">{{ msg }}</div>
+            {% endif %}
+            <input id="username" name="username" type="text" placeholder="Enter Your Username" class="textbox" required>
+            <input id="password" name="password" type="password" placeholder="Enter Your Password" class="textbox" required>
+            <input type="submit" class="btn" value="Sign In">
+        </form>
+        <div class="bottom">
+            <p><a href="{{ url_for('forgot_password') }}">Forgot Password?</a></p>
+            <p>Don't have an account? <a href="{{ url_for('register') }}">Sign Up here</a></p>
+        </div>
+    </div>
+</body>
+</html>
+

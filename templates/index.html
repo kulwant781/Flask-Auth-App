@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>News Website</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<style>
+    body {
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.button {
+    padding: 10px 20px;
+    border: none;
+    background-color: #007BFF;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    font-weight: bold;
+}
+
+.button:hover {
+    background-color: #0056b3;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 30px;
+    color: #333;
+}
+
+.news-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+}
+
+.news-card {
+    background-color: white;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 2px 8px rgba(0,0,0,0.1);
+    transition: transform 0.3s ease;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-card:hover {
+    transform: translateY(-5px);
+}
+
+.news-card img {
+    width: 100%;
+    height: 180px;
+    object-fit: cover;
+}
+
+.news-card h3 {
+    font-size: 1.1rem;
+    margin: 15px;
+    color: #222;
+}
+
+.news-card p {
+    margin: 0 15px 10px 15px;
+    font-size: 0.95rem;
+    color: #555;
+}
+
+.news-card a {
+    margin: 15px;
+    margin-top: auto;
+    text-decoration: none;
+    color: #007BFF;
+    font-weight: bold;
+}
+
+.news-card a:hover {
+    text-decoration: underline;
+}
+</style>
+
+<body>
+
+    <!-- Buttons placed side by side -->
+    <div class="button-container">
+        <a class="button button-signup" href="{{url_for('register')}}">Sign Up</a>
+        <a class="button button-login" href="{{url_for('login')}}">Log In</a>
+    </div>
+
+    <h1>Latest News on {{ category }}</h1>
+
+    <div class="news-container">
+        {% for article in articles %}
+        <div class="news-card">
+            <img src="{{ article['urlToImage'] }}" alt="News Image">
+            <h3>{{ article['title'] }}</h3>
+            <p><strong>Source:</strong> {{ article['source']['name'] }}</p>
+            <p>{{ article['description'] }}</p>
+            <a href="{{ article['url'] }}" target="_blank">Read More</a>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>

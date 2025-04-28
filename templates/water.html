@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Water Reminder</title>
+</head>
+<body>
+    <h1>Set Your Drink Water Reminder</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <p style="color: {{ 'green' if category == 'success' else 'red' }}">{{ message }}</p>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form action="{{ url_for('set_reminder') }}" method="POST">
+        <label for="interval">Set Reminder Interval (in hours):</label>
+        <input type="number" step="0.1" name="interval" value="{{ interval }}" required>
+        <button type="submit">Set Reminder</button>
+    </form>
+</body>
+</html>
+{% include 'footer.html' %}

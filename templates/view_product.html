@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    {% include 'header.html' %} <!-- Correct placement inside <body> -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Shop</title>
+    <style>
+     
+     .navigation {
+    width: 100%;
+    text-align: right; /* Aligns the contents to the right */
+    margin-top: 20px;
+        }
+
+        .add-product {
+            text-decoration: none;
+            color: #fff;
+            padding: 10px 20px;
+            background-color: #28a745;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .add-product:hover {
+            background-color: #218838;
+        }
+                h1 {
+            margin-top: 30px;
+            color: #333;
+        }
+
+        .navigation {
+            margin-top: 20px;
+            font-size: 16px;
+        }
+
+        .navigation a {
+            text-decoration: none;
+            color: #333;
+            margin: 0 15px;
+            padding: 10px 20px;
+            background-color: #28a745;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .navigation a:hover {
+            background-color: #218838;
+        }
+
+        .products-container {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            margin-top: 30px;
+            gap: 30px;
+        }
+
+        .product {
+            background-color: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+            width: 250px;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .product:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border-radius: 5px;
+        }
+
+        .product h3 {
+            margin-top: 15px;
+            color: #333;
+            font-size: 18px;
+        }
+
+        .product p {
+            color: #666;
+            font-size: 16px;
+            margin: 10px 0;
+        }
+
+        .product a {
+            display: inline-block;
+            padding: 10px 15px;
+            background-color: #007bff;
+            color: white;
+            text-decoration: none;
+            border-radius: 5px;
+            font-size: 16px;
+            margin-top: 10px;
+            transition: background-color 0.3s ease;
+        }
+
+        .product a:hover {
+            background-color: #0056b3;
+        }
+    </style>
+</head>
+
+<body>
+    <h1 style="text-align: center;">Product View </h1>
+
+  
+    <div class="navigation">
+        <a class="add-product" href="{{ url_for('add_product') }}">Add Product</a>
+    </div>
+
+    <div class="products-container">
+
+            <div class="product">
+                <img src="{{ url_for('static', filename='uploads/' + product.image) }}" alt="{{ product.name }}">
+                <h3>{{ product.name }}</h3>
+                <p>Price: ${{ product.price }}</p>
+                <a href="{{ url_for('add_to_cart', product_id=product.id) }}">Add to Cart</a>
+                
+            </div>
+    </div>
+
+</body>
+</html>
+{% include 'footer.html' %}

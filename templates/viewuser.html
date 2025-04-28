@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>View User</title>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css">
+  <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+
+  {% include 'header.html' %} <!-- Correct place: inside <body> -->
+
+<div class="container py-5">
+  <h2 class="text-center mb-4">View User Details</h2>
+
+  <div class="mb-3">
+    <a href="{{ url_for('show_all_users') }}" class="btn btn-secondary">Back</a>
+  </div>
+
+  <div class="table-responsive">
+    <table class="table table-striped table-hover align-middle">
+      <thead class="table-dark">
+        <tr>
+          <th>ID</th>
+          <th>Username</th>
+          <th>Email</th>
+          <th>Password</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr>
+          <td>{{ users.id }}</td>
+          <td>{{ users.username }}</td>
+          <td>{{ users.email }}</td>
+          <td>
+            <span id="passwordField">••••••••</span> 
+            <button class="btn btn-sm btn-outline-primary ms-2" id="showPasswordBtn">Show</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<script>
+  document.getElementById('showPasswordBtn').addEventListener('click', function() {
+    const passwordField = document.getElementById('passwordField');
+    if (passwordField.innerText === '••••••••') {
+      passwordField.innerText = "{{ users.password }}"; // show real password
+      this.innerText = 'Hide';
+    } else {
+      passwordField.innerText = '••••••••';
+      this.innerText = 'Show';
+    }
+  });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+</body>
+</html>
+{% include 'footer.html' %}

@@ -1,0 +1,136 @@
+/* Store this code in 'style.css' file inside the 'static' folder*/
+
+            .header {
+                padding: 1px 94px;
+                width: 194px;
+                height: 78px;
+                border-radius: 13px;
+                background-color: #000;
+                text-align: center;
+            }
+			.border{
+                padding: 19px 50px;
+                width: 387px;
+                height: 380px;
+                border: 1px solid #000;
+                border-radius: 14px;
+                background-color: #fff;
+			}
+
+			.btn {
+				padding: 10px 40px;
+				background-color: #000; 
+				color: #FFFFFF;
+				font-style: normal;
+				font-weight: bold;
+				border-radius: 10px;
+			}
+
+            
+
+			.textbox{
+				padding: 10px 40px;
+				background-color: #fff; 
+				color: #000;
+				border-radius: 10px;
+			}
+				
+			::placeholder {
+				color: #000;
+				opacity: 1;
+				font-style: normal;
+				font-weight: bold;
+			}
+
+			.word{
+				color: #FFFFFF;
+				font-style: normal;
+				font-weight: bold;
+			}
+
+            .msg{
+                color:#dd1b1b
+            }
+
+			.bottom{
+				color: #1797a0;
+				font-style: normal;
+				font-weight: bold;
+			}
+            body { font-family: Arial, sans-serif; text-align: center; }
+            h1 { color: #333; }
+            form { margin-bottom: 20px; }
+            .news-container { display: flex; flex-wrap: wrap; justify-content: center; }
+            .news-card {
+                width: 300px; margin: 10px; padding: 15px; border: 1px solid #ddd;
+                border-radius: 8px; box-shadow: 2px 2px 10px rgba(0, 0, 0, 0.1);
+            }
+            img { width: 100%; border-radius: 8px; }
+            .category {
+                font-size: 23px;
+                padding: -34px;
+                padding: 7px;
+                border-radius: 50px;
+            }
+            .topic{
+                text-align: left;
+                margin-right: 72px !important;
+            }
+    
+            .category_btn {
+                font-size: 25px;
+                border-radius: 47px;
+                background-color: #007bff;
+                color: #fff;
+            }
+              /* Centering and parallel alignment */
+        .button-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px; /* Space between buttons */
+            margin-top: 20px;
+        }
+        
+        /* Button Styling */
+        .button {
+            text-decoration: none;
+            padding: 10px 20px;
+            font-size: 18px;
+            font-weight: bold;
+            color: white;
+            border-radius: 5px;
+            transition: 0.3s;
+        }
+
+        .button-signup {
+            background-color: #007bff;
+        }
+
+        .button-login {
+            background-color: #28a745;
+        }
+
+        .button:hover {
+            opacity: 0.8;
+        }
+        nav ul {
+            list-style: none;
+            padding: 0;
+            display: flex;
+            background: #333;
+        }
+        
+        nav ul li {
+            margin: 0;
+            padding: 15px;
+        }
+        
+        nav ul li a {
+            color: white;
+            text-decoration: none;
+        }
+        
+        nav ul li a:hover {
+            text-decoration: underline;
+        }
+        

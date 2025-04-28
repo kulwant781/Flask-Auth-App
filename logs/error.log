@@ -1,0 +1,35 @@
+2025-04-26 14:11:43,393 ERROR: This is a test error!222 [in F:\backup files\flask_auth_app\app.py:202]
+2025-04-26 14:15:10,721 ERROR: This is a test error!222 [in F:\backup files\flask_auth_app\app.py:202]
+Traceback (most recent call last):
+  File "F:\backup files\flask_auth_app\app.py", line 189, in pay
+    stripe.Charge.create(
+  File "C:\Users\tbi_l\AppData\Local\Programs\Python\Python312\Lib\site-packages\stripe\_charge.py", line 2702, in create
+    cls._static_request(
+  File "C:\Users\tbi_l\AppData\Local\Programs\Python\Python312\Lib\site-packages\stripe\_api_resource.py", line 172, in _static_request
+    return _APIRequestor._global_instance().request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tbi_l\AppData\Local\Programs\Python\Python312\Lib\site-packages\stripe\_api_requestor.py", line 197, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders, api_mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tbi_l\AppData\Local\Programs\Python\Python312\Lib\site-packages\stripe\_api_requestor.py", line 853, in _interpret_response
+    self.handle_error_response(
+  File "C:\Users\tbi_l\AppData\Local\Programs\Python\Python312\Lib\site-packages\stripe\_api_requestor.py", line 336, in handle_error_response
+    raise err
+stripe._error.InvalidRequestError: Request req_lJIelOGks9J6bF: You cannot accept payments using this API as it is no longer supported in India. Please refer to https://stripe.com/docs/payments for accepting payments.
+2025-04-26 14:24:27,437 ERROR: This is a test error!222 [in F:\backup files\flask_auth_app\app.py:202]
+Traceback (most recent call last):
+  File "F:\backup files\flask_auth_app\app.py", line 189, in pay
+    stripe.Charge.create(
+  File "C:\Users\tbi_l\AppData\Local\Programs\Python\Python312\Lib\site-packages\stripe\_charge.py", line 2702, in create
+    cls._static_request(
+  File "C:\Users\tbi_l\AppData\Local\Programs\Python\Python312\Lib\site-packages\stripe\_api_resource.py", line 172, in _static_request
+    return _APIRequestor._global_instance().request(
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tbi_l\AppData\Local\Programs\Python\Python312\Lib\site-packages\stripe\_api_requestor.py", line 197, in request
+    resp = requestor._interpret_response(rbody, rcode, rheaders, api_mode)
+           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "C:\Users\tbi_l\AppData\Local\Programs\Python\Python312\Lib\site-packages\stripe\_api_requestor.py", line 853, in _interpret_response
+    self.handle_error_response(
+  File "C:\Users\tbi_l\AppData\Local\Programs\Python\Python312\Lib\site-packages\stripe\_api_requestor.py", line 336, in handle_error_response
+    raise err
+stripe._error.InvalidRequestError: Request req_x7sUFuYoejrWFz: You cannot accept payments using this API as it is no longer supported in India. Please refer to https://stripe.com/docs/payments for accepting payments.

@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Dashboard</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+    {% include 'header.html' %}
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f7f7f7;
+            margin: 0;
+            padding: 20px;
+        }
+
+        h2 {
+            text-align: center;
+            color: #333;
+        }
+
+        form {
+            text-align: center;
+            margin: 20px auto;
+        }
+
+        .category {
+            padding: 10px;
+            width: 300px;
+            border-radius: 6px;
+            border: 1px solid #ccc;
+            font-size: 16px;
+        }
+
+        .category_btn {
+            padding: 10px 20px;
+            border: none;
+            background-color: #007BFF;
+            color: white;
+            font-size: 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            margin-left: 10px;
+        }
+
+        .category_btn:hover {
+            background-color: #0056b3;
+        }
+
+        .topic {
+            text-align: center;
+            color: #555;
+            margin-top: 30px;
+        }
+
+        .news-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 10px;
+            padding: 20px;
+        }
+
+        .news-card {
+            background-color: white;
+            border-radius: 10px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+            padding: 20px;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+        }
+
+        .news-card img {
+            width: 100%;
+            height: 180px;
+            object-fit: cover;
+            border-radius: 8px;
+            margin-bottom: 15px;
+        }
+
+        .news-card h3 {
+            font-size: 18px;
+            margin: 0 0 10px;
+            color: #333;
+        }
+
+        .news-card p {
+            color: #555;
+            font-size: 14px;
+            margin: 5px 0;
+        }
+
+        .news-card a {
+            margin-top: auto;
+            align-self: flex-start;
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        .news-card a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+    <div style="max-width: 600px; margin: 40px auto; text-align: center;">
+        <h2 style="font-size: 24px; margin-bottom: 20px; color: #333;">Enter topic (e.g., sports, market, tech)</h2>
+        
+        <!-- Search Form -->
+        <form method="POST" style="display: flex; justify-content: center; align-items: center; gap: 10px; flex-wrap: wrap;">
+            <input 
+                type="text" 
+                name="category" 
+                class="category" 
+                placeholder="Enter topic" 
+                style="padding: 10px 15px; border: 1px solid #ccc; border-radius: 5px; width: 60%; font-size: 16px;"
+            >
+            <button 
+                class="category_btn" 
+                type="submit" 
+                style="padding: 10px 20px; background-color: #007BFF; color: white; border: none; border-radius: 5px; font-size: 16px; cursor: pointer;"
+            >
+                Search
+            </button>
+        </form>
+        
+        <!-- Topic Title -->
+        {% if category %}
+            <h1 class="topic" style="margin-top: 20px; font-size: 28px; color: #007BFF;">
+                Latest News on "{{ category }}"
+            </h1>
+        {% endif %}
+    </div>
+    
+    <div class="news-container">
+        {% for article in articles %}
+        <div class="news-card">
+            <img src="{{ article['urlToImage'] or 'https://via.placeholder.com/300x180?text=No+Image' }}" alt="News Image">
+            <h3>{{ article['title'] }}</h3>
+            <p><strong>Source:</strong> {{ article['source']['name'] }}</p>
+            <p>{{ article['description'] }}</p>
+            <a href="{{ article['url'] }}" target="_blank">Read More</a>
+        </div>
+        {% endfor %}
+    </div>
+
+</body>
+</html>
+{% include 'footer.html' %}

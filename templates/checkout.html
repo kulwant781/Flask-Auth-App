@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout</title>
+    {% include 'header.html' %}
+    <script src="https://js.stripe.com/v3/"></script>
+    <style>
+    .checkout-container {
+    background-color: #fff;
+    padding: 34px;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px;
+    width: 100%;
+    margin-top: 50px;
+    margin-left: 30%;
+    }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        p {
+            font-size: 1.2em;
+            color: #333;
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .total-amount {
+            font-weight: bold;
+            font-size: 1.5em;
+            color: #28a745;
+            margin-top: 10px;
+            text-align: center;
+        }
+
+    </style>
+</head>
+<body>
+    <div class="checkout-container">
+        <h1>Checkout</h1>
+        <p>Your total amount is:</p>
+        <div class="total-amount">${{ total_amount }}</div>
+        
+        <form action="{{ url_for('pay') }}" method="POST">
+            <script 
+                src="https://checkout.stripe.com/checkout.js" 
+                class="stripe-button"
+                data-key=""
+                data-amount="{{ total_amount * 100 }}" 
+                data-name="E-commerce Payment"
+                data-currency="usd"
+                data-description="Payment for your order"
+                data-label="Pay Now">
+            </script>
+        </form>
+    </div>
+</body>
+</html>
+{% include 'footer.html' %}

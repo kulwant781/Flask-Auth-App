@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cart</title>
+    {% include 'header.html' %}
+    <style>
+    
+        h1 {
+            text-align: center;
+            margin-top: 20px;
+            color: #333;
+        }
+
+        .cart-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            margin-top: 30px;
+        }
+
+        a {
+            color: #007BFF;
+            text-decoration: none;
+            font-weight: bold;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        .cart-items {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .cart-item {
+            display: flex;
+            align-items: center;
+            padding: 10px 0;
+            border-bottom: 1px solid #ddd;
+        }
+
+        .cart-item img {
+            width: 50px;
+            margin-right: 15px;
+        }
+
+        .cart-item-info {
+            flex-grow: 1;
+        }
+
+        .cart-item-info p {
+            margin: 5px 0;
+        }
+
+        .cart-item-total {
+            font-weight: bold;
+        }
+
+        .cart-footer {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-top: 20px;
+        }
+
+        .cart-footer a {
+            padding: 10px 20px;
+            background-color: #28a745;
+            color: white;
+            border-radius: 5px;
+            text-transform: uppercase;
+            font-weight: bold;
+        }
+
+        .cart-footer a:hover {
+            background-color: #218838;
+        }
+    </style>
+</head>
+<body>
+    <h1>Your Cart</h1>
+    <div class="cart-container">
+        <a href="{{ url_for('product_index') }}">Continue Shopping</a>
+        <ul class="cart-items">
+            {% for id, item in cart_items.items() %}
+                <li class="cart-item">
+                    <img src="{{ url_for('static', filename='uploads/' + item.image) }}" alt="{{ item.name }}">
+                    <div class="cart-item-info">
+                        <p>{{ item.name }} (x{{ item.quantity }})</p>
+                        <p>${{ item.price }}</p>
+                    </div>
+                    <div class="cart-item-total">
+                        ${{ item.price * item.quantity }}
+                    </div>
+                </li>
+            {% endfor %}
+        </ul>
+        <div class="cart-footer">
+            <a href="{{ url_for('checkout') }}">Proceed to Checkout</a>
+        </div>
+    </div>
+</body>
+</html>
+{% include 'footer.html' %}
